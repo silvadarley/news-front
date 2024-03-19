@@ -1,0 +1,37 @@
+/* body{
+    background-color: rgba(0, 0, 0, 0.808);
+} */
+.menu{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background-color: #fff;
+    color: rgb(255, 0, 0);
+    align-items:center ;
+    padding: 0 12px;
+    
+}
+
+.menu button{
+    background-color: transparent;
+    color: red;
+    border: none;
+    cursor: pointer;
+}
+
+.menu_lateral{
+    height: 100vh;
+    width: 200px;
+    background-color: #fff;
+    position: fixed;
+    color: red;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.menu_lateral .fechar{
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px;
+}
