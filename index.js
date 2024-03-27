@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const usuarioModel = require('./src/module/usuario/usuario.model.js');
-const noticiaModel  = require('./src/module/noticia/noticia.model.js');
+const noticiaModel = require('./src/module/noticia/noticia.model.js');
 
 const app = express();
 app.use(express.json());
@@ -48,7 +48,7 @@ app.get('/usuarios', async (req, res) => {
 });
 
 //Cadastro de usuário
-app.post('/usuarios',  async (req, res) => {
+app.post('/usuarios', async (req, res) => {
     if (!req.body.email) {
         return res.status(400).json({ message: 'O campo **e-mail** é obrigatório.' });
     };
@@ -63,8 +63,8 @@ app.post('/usuarios',  async (req, res) => {
 
     //verifica se o usuário ja existe na base
     const usuarioExistente = await usuarioModel.findOne({ email: req.body.email });
-    if (usuarioExistente.length) {
-        return res.status(400).json({ mesage: (`Usuário ${req.body.email} já possui cadastro!`) })
+    if (usuarioExistente) {
+        return res.status(400).json({ message: `Usuário ${req.body.email} já possui cadastro!` });
     };
 
     const senhaCriptografada = bcrypt.hashSync(req.body.senha, 10)
@@ -81,17 +81,17 @@ app.post('/usuarios',  async (req, res) => {
         })
     };
     // return res.status(200).json(usuario);
-     return res.status(200).json(message, `Usuário ${req.body.nome}, adicionado com sucesso!`);
+    return res.status(200).json({ message: `Usuário ${req.body.nome}, adicionado com sucesso!` });
     //return res.status(200).json(usuario);
 });
 
 //Lista noticias
 app.get('/noticias', async (req, res) => {
-    let filtroCategoria ={};
+    let filtroCategoria = {};
 
     //Procurando a noticia por categoria
-    if(req.query.categoria){
-        filtroCategoria = {categoria: req.query.categoria};
+    if (req.query.categoria) {
+        filtroCategoria = { categoria: req.query.categoria };
     };
 
     const noticias = await noticiaModel.find(filtroCategoria);
