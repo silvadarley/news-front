@@ -30,7 +30,7 @@ const cadastroForm = () =>{
             console.log(data)
             router.push('/usuarios')
         } catch (error){
-            console.log(data)
+            // console.log(data)
             alert(error.response.data.message)
             // alert('deu um erro!')
         }

@@ -1,13 +1,30 @@
 'use client'
+import { useState } from 'react';
+import './style.css';
 
-const cardNoticia = ({noticia}) =>{
+const cardNoticia = ({ noticia }) => {
+    const [isHover, setIsHover] = useState(false);
+    return (
+        <div className="card-noticia">
+            <div 
+                style={{ position: 'relative' }}
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}
+            >
+                <div className='popular'
+                    style={{opacity: isHover ? '1' : '0' }}
+                >Clique Aqui!</div>
+                {/* <img className='imagem' src={noticia.img} alt={noticia.titulo} /> */}
+                <div className='imagem' style={{backgroundImage: `url(${noticia.img})`}}/>
+            </div>
 
-    return(
-        <section>
             <h2>{noticia.titulo}</h2>
-            <img src={noticia.img} alt={noticia.titulo} />
-            <p dangerouslySetInnerHTML={{__html: noticia.texto}}/>
-        </section>
+            <p dangerouslySetInnerHTML={{ __html: noticia.texto }} />
+            <hr />
+            <div className="publicado-em">
+                {new Date(noticia.createdAt).toLocaleDateString('pt-br')}
+            </div>
+        </div>
     );
 
 };

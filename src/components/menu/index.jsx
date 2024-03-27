@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation'
 import { useState } from 'react';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faMugHot, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import './style.css';
 
@@ -12,15 +14,19 @@ const menu = () => {
     const router = useRouter();
     return (
         <>
-            <nav className='menu'>
+            <nav className='menu fixed-nav'>
                 <button onClick={
                     () => setMenuLateral(!menuLateral)
                 }>
-                    MENU
+                    {/* MENU */}
+                    <FontAwesomeIcon icon={faBars} size="2x" color='#333' />
                 </button>
-
-                <div>LOGO</div>
-                <button onClick={() => router.push('/login')}>LOGIN</button>
+                <div className='logo-container'>
+                    <div className='marca'>
+                        <FontAwesomeIcon icon={faMugHot} size='2x'/> Logo
+                    </div>
+                </div>
+                <button className='login' onClick={() => router.push('/login')}>LOGIN</button>
             </nav>
 
             {menuLateral &&
@@ -28,7 +34,7 @@ const menu = () => {
                     <div className='fechar' onClick={
                         () => setMenuLateral(!menuLateral)
                     }>
-                        X
+                        <FontAwesomeIcon icon={faXmark} size='2x' />
                     </div>
 
                     <ul>
