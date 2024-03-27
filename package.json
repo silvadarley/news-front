@@ -1,4 +1,22 @@
 {
+<<<<<<< HEAD
+  "name": "news-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "author": "Darley",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.1"
+=======
   "name": "front",
   "version": "0.1.0",
   "private": true,
@@ -20,5 +38,6 @@
     "next": "^14.2.0-canary.24",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+>>>>>>> 964e591941b18514071639ebf80f6e4ae562b9bb
   }
 }
